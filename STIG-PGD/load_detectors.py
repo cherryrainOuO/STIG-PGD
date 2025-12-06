@@ -6,10 +6,8 @@ from pathlib import Path
 
 from model.cnn import build_classifier_from_vit
 
-def From_vit(opt, device):
+def From_vit(opt, device, root):
     print('[  Current classifier : {}  ]\n'.format(opt.classifier))
-
-    root = './pretrained_detectors/human_vit'
 
     model = build_classifier_from_vit(opt)
     param = torch.load(os.path.join(root, 'model.pt'), map_location = torch.device('cpu'))
@@ -17,11 +15,11 @@ def From_vit(opt, device):
     model = model.to(device)
     return model
 
-def From_dif(device):
+def From_dif(device, root):
 
     # TrainerMultiple 객체 준비
     
-    root = Path('./pretrained_detectors/human_dif')
+    root = Path(root)
     
     with open(root / "train_hypers.pt", 'rb') as pickle_file:
         hyper_pars = pickle.load(pickle_file)
@@ -33,7 +31,7 @@ def From_dif(device):
     
     return trainer
 
-def load(opt, device):
-    vit_model = From_vit(opt, device)
-    dif_trainer = From_dif(device)
+def load(opt, device, vit_root, dif_root):
+    vit_model = From_vit(opt, device, vit_root)
+    dif_trainer = From_dif(device, dif_root)
     return vit_model, dif_trainer
