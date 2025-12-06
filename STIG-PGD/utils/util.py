@@ -46,6 +46,9 @@ class OptionConfigurator() :
 
         parser.add_argument('--inference_data', help = 'root of dataset directory for inference samples')
         parser.add_argument('--inference_params', help = 'root of model parameter for inference samples')
+        
+        parser.add_argument('--vit_root', type = str, default = '_', help = 'vit detector root path')
+        parser.add_argument('--dif_root', type = str, default = '_', help = 'dif detector root path')
 
         return parser
 

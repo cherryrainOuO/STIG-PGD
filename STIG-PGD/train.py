@@ -27,11 +27,8 @@ if __name__ == '__main__' :
 
     is_gpu = torch.cuda.is_available()
     device = torch.device(opt.device) if is_gpu else torch.device('cpu')
-
-    vit_root = './pretrained_detectors/human_vit'
-    dif_root = './pretrained_detectors/human_dif'
     
-    vit_model, dif_trainer = load_detectors.load(opt, device, vit_root, dif_root) # pgd용 vit, dif 가져오기
+    vit_model, dif_trainer = load_detectors.load(opt, device) # pgd용 vit, dif 가져오기
     model = STIG_PGD(opt, device, vit_model, dif_trainer).to(device)
 
     save_path = os.path.join('./results', opt.dst)
