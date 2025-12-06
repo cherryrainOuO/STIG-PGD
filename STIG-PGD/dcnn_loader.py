@@ -2,9 +2,12 @@ from pathlib import Path
 import torch
 import numpy as np
 from dncnn.trainer import TrainerDnCNN, load_model
+import os
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+dncnn_root = Path(os.path.join(script_dir, "dncnn"))
 
-dncnn_root = Path("dncnn")
+#dncnn_root = Path("dncnn")
 
 def load_denoiser(device: str, trainable:bool=False)-> torch.nn.Module:
 

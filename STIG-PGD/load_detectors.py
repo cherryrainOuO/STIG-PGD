@@ -8,8 +8,8 @@ from model.cnn import build_classifier_from_vit
 
 def From_vit(opt, device):
     print('[  Current classifier : {}  ]\n'.format(opt.classifier))
-
-    root = './pretrained_detectors/human_vit'
+    
+    root = opt.vit_root
 
     model = build_classifier_from_vit(opt)
     param = torch.load(os.path.join(root, 'model.pt'), map_location = torch.device('cpu'))
@@ -17,11 +17,10 @@ def From_vit(opt, device):
     model = model.to(device)
     return model
 
-def From_dif(device):
-
+def From_dif(opt, device):
     # TrainerMultiple 객체 준비
     
-    root = Path('./pretrained_detectors/human_dif')
+    root = Path(opt.dif_root)
     
     with open(root / "train_hypers.pt", 'rb') as pickle_file:
         hyper_pars = pickle.load(pickle_file)
@@ -35,5 +34,5 @@ def From_dif(device):
 
 def load(opt, device):
     vit_model = From_vit(opt, device)
-    dif_trainer = From_dif(device)
+    dif_trainer = From_dif(opt, device)
     return vit_model, dif_trainer
