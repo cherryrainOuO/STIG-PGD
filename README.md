@@ -157,7 +157,7 @@ To install our implementation, clone our repository and run following commands t
    ```shell script
 conda create -n stig-pgd python=3.9.2
 conda activate stig-pgd
-pip install torch==1.8.0+cu111 torchvision==0.9.0+cu111 torchaudio==0.8.0 -f https://download.pytorch.org/whl/torch_stable.html
+pip install torch==2.7.0+cu128 torchvision==0.22.0+cu128 torchaudio==2.7.0+cu128 --index-url https://download.pytorch.org/whl/cu128
 pip install -r requirements.txt
 ```
 ### Preparing Dataset
@@ -178,20 +178,32 @@ You can generate or acquire images using other Stable Diffusion models, and you 
 ### Training
 
 ```shell script
-python train.py --size 256 --data {dataset_name} --epoch 10 --batch_size 1 --lr 0.00008 --device {gpu_ids} --dst {experiment_name} --vit_root {} --dif_root {}
+python train.py --size 256 --data {dataset_name} --epoch 10 --batch_size 1 --lr 0.00008 --device {gpu_ids} --dst {experiment_name} --vit_root ./pretrained_detectors/{vit_detector_folder} --dif_root ./pretrained_detectors/{dif_detector_folder}
 ```
+```size```: Referes to the **image size**. It is fixed at **256**.<br>
+```epoch```: The number of training iterations. You can specify the desired number.<br>
+```batch_size, lr```: The current values are to be kept fixed.<br>
+```dst```: Specifies the folder where the results will be saved. If you enter a name, it will be automatically created inside the **results** folder. An error will occur if the folder name already exists within the **results** directory.<br>
+```vit_root, dif_root```: The **pre-trained models** for the ViT and DIF detectors that PGD will attack. They are located inside the **pretrained_detectors** folder.<br>
 Enter the command. You can change the GPU device by modifying the option ```--device```.<br>
 
-The sampled results are visualized in the ```results/{experiment_name}/sample/``` during the training.<br> 
+The sampled results are visualized in the ```results/{experiment_name}/sample/``` during the training. The samples are saved every 100 steps.<br> 
 
 After training, the results image and magnitude spectrum will be saved at each folder in ```results/{experiment_name}/eval/```.<br>
 
 Inside the ```eval``` folder, you will find three subfolders: ```clean```, ```denoised```, and ```noise```. The ```clean``` folder contains the original real images, the ```noise``` folder contains the original AI-generated images, and the ```denoised``` folder contains the refined AI images.
 ### Inference
-```shell script
-python inference.py --size 256 --inference_data datasets\{inference_dataset_name}\fake --device {gpu_ids} --inference_params results\{experiment_name}\parameters_{}_epoch.pt --dst {experiment_name}
-```
-Enter the command.
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/716ba711-a323-400c-98e8-25f79fd27386" alt="Inference" width="80%" />
+</p>
+
+When you run the ```gradio_app.py``` file, the following interface appears. <br> 
+
+```모델 체크포인트 경로```: This is the checkpoint path for the trained model. It is a ```.pt``` format file located in ```results/{experiment_name}```. Please enter the absolute path of the file. e.g. ```E:\STIG-PGD\STIG-PGD\results\human\parameters_0_epoch.pt```<br>
+```GPU 디바이스```: This is the GPU device number. It is usually 0.<br>
+```이미지 크기```: The image size is fixed at 256.<br>
+```입력 데이터셋 폴더 경로```: This is the absolute path to the folder containing the fake images to be used for inference. e.g. ```E:\STIG-PGD\STIG-PGD\datasets\human_inference\fake```<br>
+```추론 결과 저장 폴더 경로```: This is the absolute path to the folder where the inference result images will be saved. The inference result images are located in the ```denoised``` folder within the inference result folder.<br>
 
 The inference results are saved at ```results/{experiment_name}/inference/```.<br>
 
