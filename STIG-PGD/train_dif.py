@@ -3,7 +3,7 @@ import torch
 import argparse
 import data_dif as data
 from trainer_dif import TrainerMultiple
-from utils import *
+from dif_utils import *
 from pathlib import Path
 import pickle
 
@@ -55,8 +55,8 @@ def train_model(args: argparse.Namespace) -> None:
 
     print('Preparing Data Sets...')
 
-    real_data_root = data_root / "0_real"
-    fake_data_root = data_root / "1_fake"
+    real_data_root = data_root / "real"
+    fake_data_root = data_root / "fake"
 
     real_path_list = [list(real_data_root.glob('*.' + x)) for x in ['jpg', 'jpeg', 'png']]
     real_path_list = [ele for ele in real_path_list if ele != []][0]

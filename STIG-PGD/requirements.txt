@@ -1,8 +1,11 @@
 # STIG-PGD Requirements
+
 # Deep Learning
 torch>=1.12.0
 torchvision>=0.13.0
+torchaudio>=0.10.0
 torchsummary>=1.5.1
+pytorch_pretrained_vit>=0.0.7
 
 # Image Processing
 Pillow>=9.0.0
@@ -11,16 +14,20 @@ opencv-python>=4.5.0
 # Scientific Computing
 numpy>=1.21.0
 scipy>=1.7.0
+scikit-learn>=1.0.0
 
 # Visualization
 matplotlib>=3.5.0
+tensorboard
 
 # Utilities
 tqdm>=4.62.0
+requests>=2.31.0
 
 # Metrics
 pytorch-fid>=0.3.0
 
 # GUI
 gradio>=4.0.0
-
+huggingface-hub==0.20.3
+pydantic==2.10.6
