@@ -155,7 +155,7 @@ We recommend running our code using:
 
 To install our implementation, clone our repository and run following commands to install necessary packages:
    ```shell script
-conda create -n stig-pgd python=3.13.3
+conda create -n stig-pgd python=3.9.2
 conda activate stig-pgd
 pip install torch==1.8.0+cu111 torchvision==0.9.0+cu111 torchaudio==0.8.0 -f https://download.pytorch.org/whl/torch_stable.html
 pip install -r requirements.txt
@@ -178,7 +178,7 @@ You can generate or acquire images using other Stable Diffusion models, and you 
 ### Training
 
 ```shell script
-python train.py --size 256 --data {dataset_name} --epoch 10 --batch_size 1 --lr 0.00008 --device {gpu_ids} --dst {experiment_name}
+python train.py --size 256 --data {dataset_name} --epoch 10 --batch_size 1 --lr 0.00008 --device {gpu_ids} --dst {experiment_name} --vit_root {} --dif_root {}
 ```
 Enter the command. You can change the GPU device by modifying the option ```--device```.<br>
 
@@ -206,13 +206,13 @@ We have prepared two detectors: the ViT and DIF detectors.
 
 **ViT**
 ```shell script
-python detect.py --is_train False --classifier vit --lr 0.0002 --size 256 --device {gpu_ids} --class_batch_size 32 --dst {experiment_name} --eval_root results\{experiment_name}\inference\denoised
+python train_vit.py --is_train True --classifier vit --lr 0.0002 --size 256 --device {gpu_ids} --class_epoch {epochs} --class_batch_size 32 --dst {experiment_name}
 ```
 
 
 **DIF**
 ```shell script
-python detect.py --is_train False --classifier dif --lr 0.0002 --size 256 --device {gpu_ids} --class_batch_size 32 --dst {experiment_name} --eval_root results\{experiment_name}\inference\denoised
+python train_dif.py data/{dataset_name} checks/{checkpoint_name} -e {epochs} -f 1
 ```
 
 ## Reference
