@@ -265,7 +265,7 @@ Additionally, ViT uses the clean(real image) and noise(fake image) folders from 
 
 **DIF**
 ```shell script
-python train_dif.py datasets/{dataset_name} checks/{checkpoint_name} -e {epochs} -f 1
+python train_dif.py datasets/{dataset_name} checks/{checkpoint_name} --e {epochs} --f 1
 ```
 
 ```datasets```: This is the path to the dataset for training. Specify the folder name within the ```datasets``` folder to be used for training. <br>
