@@ -61,80 +61,65 @@ The final Refined Fake Image is confirmed to be effective by forcing the ViT, DI
 
 ## Performance Comparison
 <table>
-  <thead>
-    <tr>
-      <th align="left">Detector Type</th>
-      <th align="left">Test Images</th>
-      <th align="left">Accuracy</th>
-      <th align="left">F1-Score</th>
-      <th align="left">Remark</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td align="left" rowspan="4"><b>ViT</b></td>
-      <td align="left">Real Images (2400) <br> + Original AI Generated Images (2400)</td>
-      <td align="left">93.5%</td>
-      <td align="left">0.9351</td>
-      <td align="left">Baseline accuracy against unaugmented fake images.</td>
-    </tr>
-    <tr>
-      <td align="left">Real Images (2400) <br> + STIG Augmented AI Images (2400)</td>
-      <td align="left">81.1%</td>
-      <td align="left">0.8107</td>
-      <td align="left">Spectral refinement offers moderate evasion.</td>
-    </tr>
-    <tr>
-      <td align="left">Real Images (2400) <br> + PGD Augmented AI Images (2400)</td>
-      <td align="left">74.9%</td>
-      <td align="left">0.7460</td>
-      <td align="left">Adversarial artifacts provide significant evasion.</td>
-    </tr>
-    <tr>
-      <td align="left">Real Images (2400) <br> + STIG-PGD Augmented AI Images (2400)</td>
-      <td align="left"><b>43.5%</b></td>
-      <td align="left"><b>0.3033</b></td>
-      <td align="left"><b>Lowest F1-Score 👑</b></td>
-    </tr>
-  </tbody>
-</table>
-<table>
-  <thead>
-    <tr>
-      <th align="left">Detector Type</th>
-      <th align="left">Test Images</th>
-      <th align="left">Accuracy</th>
-      <th align="left">F1-Score</th>
-      <th align="left">Remark</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td align="left" rowspan="4"><b>DIF</b></td>
-      <td align="left">Real Images (2400) <br> + Original AI Generated Images (2400)</td>
-      <td align="left">99.6%</td>
-      <td align="left">0.9965</td>
-      <td align="left">Baseline accuracy against unaugmented fake images.</td>
-    </tr>
-    <tr>
-      <td align="left">Real Images (2400) <br> + STIG Augmented AI Images (2400)</td>
-      <td align="left">89.1%</td>
-      <td align="left">0.8782</td>
-      <td align="left">Spectral refinement offers moderate evasion.</td>
-    </tr>
-    <tr>
-      <td align="left">Real Images (2400) <br> + PGD Augmented AI Images (2400)</td>
-      <td align="left">74.7%</td>
-      <td align="left">0.6626</td>
-      <td align="left">PGD artifacts significantly decrease detection performance.</td>
-    </tr>
-    <tr>
-      <td align="left">Real Images (2400) <br> + STIG-PGD Augmented AI Images (2400)</td>
-      <td align="left"><b>68.9%</b></td>
-      <td align="left"><b>0.5496</b></td>
-      <td align="left"><b>Lowest F1-Score 👑</b></td>
-    </tr>
-  </tbody>
+    <thead>
+        <tr>
+            <th align="center" rowspan="2">Test Images</th>
+            <th align="center" colspan="2">ViT</th>
+            <th align="center" colspan="2">DIF</th>
+            <th align="center" colspan="2">Average</th>
+            <th align="center" rowspan="2">Remark</th>
+        </tr>
+        <tr>
+            <th align="center">Accuracy</th>
+            <th align="center">F1-Score</th>
+            <th align="center">Accuracy</th>
+            <th align="center">F1-Score</th>
+            <th align="center">Accuracy</th>
+            <th align="center">F1-Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="center">Real Images (2400) <br> + Original AI Generated Images (2400)</td>
+            <td align="center">93.5%</td>
+            <td align="center">0.9351</td>
+            <td align="center">99.6%</td>
+            <td align="center">0.9965</td>
+            <td align="center">96.57%</td>
+            <td align="center">0.9658</td>
+            <td align="left">Baseline accuracy against unaugmented fake images.</td>
+        </tr>
+        <tr>
+            <td align="center">Real Images (2400) <br> + STIG Augmented AI Images (2400)</td>
+            <td align="center">81.1%</td>
+            <td align="center">0.8107</td>
+            <td align="center">89.1%</td>
+            <td align="center">0.8782</td>
+            <td align="center">85.1%</td>
+            <td align="center">0.8444</td>
+            <td align="left">Spectral refinement offers moderate evasion.</td>
+        </tr>
+        <tr>
+            <td align="center">Real Images (2400) <br> + PGD Augmented AI Images (2400)</td>
+            <td align="center">74.9%</td>
+            <td align="center">0.746</td>
+            <td align="center">74.7%</td>
+            <td align="center">0.6626</td>
+            <td align="center">74.8%</td>
+            <td align="center">0.7043</td>
+            <td align="left">PGD artifacts significantly decrease detection performance.</td>
+        </tr>
+        <tr>
+            <td align="center">Real Images (2400) <br> + STIG-PGD Augmented AI Images (2400)</td>
+            <td align="center"><b>43.5%</b></td>
+            <td align="center"><b>0.3033</b></td>
+            <td align="center"><b>63.02%</b></td>
+            <td align="center"><b>0.4147</b></td>
+            <td align="center"><b>53.26%</b></td>
+            <td align="center"><b>0.359</b></td>
+            <td align="left"><b>Lowest F1-Score 👑</b></td>
+        </tr>
+    </tbody>
 </table>
 
 ## Additional Results
