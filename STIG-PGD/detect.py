@@ -227,7 +227,7 @@ class DetectRunner:
 
                         # 4. 원본 레이블과 예측 레이블 비교 (일치하면 1, 다르면 0)
                         # np.equal은 요소별 비교를 수행합니다. True/False 배열 반환.
-                        if preds == 0:
+                        if preds == 1:
                             f_preds_label.append("Fake")
                         else:
                             f_preds_label.append("Real")
