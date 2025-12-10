@@ -184,8 +184,41 @@ If you would like to know more about the training, inference methods, and the de
 <summary> Demo </summary>
 
 The dataset and checkpoint files required for demo execution have been prepared. Please use the Google Drive link below to download the files. <br>
-[Demo file](https://drive.google.com/drive/folders/1q6-aDSPMqo_txCLIuriYCSQHHrsGAvaW?usp=sharing)
-    
+[Demo file](https://drive.google.com/drive/folders/1q6-aDSPMqo_txCLIuriYCSQHHrsGAvaW?usp=sharing) <br>
+If you have downloaded the ```Demo``` folder, you will find three subfolders.<br>
+```datasets```: Contains folders for fake and real images, with 2,400 images in each. <br>
+```model_checkpoint```: Contatins the pre-trained checkpoint file for STIG-PGD, which is used for inference. <br>
+```pretrained_detectors```: Includes checkpoint folders for the ViT and DIF detectors. Within this folder, ```human_vit``` contains the checkpoint for the ViT, and ```human_dif``` contains the checkpoint for the DIF. These are used for detector evaluation. <br>
+Executing ```gradio_app.py``` allows you to perform inference in the ```Inference``` tab and run detector evaluations in the ```Detect``` tab. <br>
+
+### Inference
+
+<p align="center">
+    <img width="80%" alt="image" src="https://github.com/user-attachments/assets/f12bcdda-aa2a-49e5-a7d0-53062b6cb513" />
+</p>
+
+1. Enter the absolute path of the pre-trained STIG-PGD checkpoint file in the ```모델 체크포인트 경로```. <br>
+2. Fix the ```GPU 디바이스``` and ```이미지 크기``` to their current values. <br>
+3. Enter the absolute path of the ```fake``` folder inside the ```datasets``` folder in the ```입력 데이터셋 폴더 경로```. <br>
+4. Enter the absolute path of the folder where the inference result images will be saved in the ```추론 결과 저장 폴더 경로```. The inference folder will be created automatically, so you don't need to create it.<br>
+5. Click the ```추론 시작``` button. <br>
+
+When inference is complete, a ```denoised``` folder containing the result images will be generated in the specified inference result directory. <br>
+
+### Evaluation
+
+<p align="center">
+    <img width="80%" alt="image" src="https://github.com/user-attachments/assets/b6d351fb-eb17-41bb-9493-1ff711b50b0a" />
+</p>
+
+1. Select the detector model to be used for evaluation. <br>
+2. Enter the absolute folder path of the detector model in the ```감지기 모델 폴더 경로```. (If you select ViT, please enter the absolute path of the ```human_vit``` folder. If you select DIF, please enter the absolute path of the ```human_dif``` folder. <br>
+3. Enter the absolute folder path of the real images in the ```Real 이미지 데이터셋 폴더 경로```. (This corresponds to the ```real``` folder within the ```datasets``` folder.) <br>
+4. Enter the absolute folder path of the fake image dataset in the ```Fake 이미지 데이터셋 폴더 경로```. (If you using the original fake images, enter the ```fake``` folder within the ```datasets``` folder. If using the fake images created after inference, enter the ```denoised``` folder within the inference resultd folder.) <br>
+5. Click the ```평가 시작``` button. <br>
+
+Once the evaluation is complete, the F1 score and Accuracy will be displayed. You can also view how the AI made its decisions for a randomly selected real and fake images. If the image is determined to be a genuine image, the "Real" label is output; if it is determined to be an AI-generated image, the "Fake" label is output. <br>
+
 </details>
 
 <details>
@@ -200,7 +233,8 @@ python train.py --size 256 --data {dataset_name} --epoch 10 --batch_size 1 --lr 
 ```epoch```: The number of training iterations. You can specify the desired number.<br>
 ```batch_size, lr```: The current values are to be kept fixed.<br>
 ```dst```: Specifies the folder where the results will be saved. If you enter a name, it will be automatically created inside the **results** folder. An error will occur if the folder name already exists within the **results** directory.<br>
-```vit_root, dif_root```: The **pre-trained models** for the ViT and DIF detectors that PGD will attack. They are located inside the **pretrained_detectors** folder.<br>
+```vit_root, dif_root```: The **pre-trained models** for the ViT and DIF detectors that PGD will attack. If the ```pretrained_detectors``` folder is missing, click the Drive link below to download it, and the move the downloaded ```pretrained_detectors``` folder into the ```STIG-PGD``` directory. <br>
+[Demo file](https://drive.google.com/drive/folders/1q6-aDSPMqo_txCLIuriYCSQHHrsGAvaW?usp=sharing) <br>
 Enter the command. You can change the GPU device by modifying the option ```--device```.<br>
 
 The sampled results are visualized in the ```results/{experiment_name}/sample/``` during the training. The samples are saved every 100 steps.<br> 
