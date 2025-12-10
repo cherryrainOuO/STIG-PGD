@@ -130,8 +130,8 @@ The final Refined Fake Image is confirmed to be effective by forcing the ViT, DI
     </tr>
     <tr>
       <td align="left">Real Images (2400) <br> + STIG-PGD Augmented AI Images (2400)</td>
-      <td align="left"><b>68.9%</b></td>
-      <td align="left"><b>0.5496</b></td>
+      <td align="left"><b>63.02%</b></td>
+      <td align="left"><b>0.4147</b></td>
       <td align="left"><b>Lowest F1-Score 👑</b></td>
     </tr>
   </tbody>
