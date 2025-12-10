@@ -399,7 +399,7 @@ class DetectRunner:
                     FP = (1 - acc_r) * n_real
                     Precision = TP / (TP + FP)
                     Recall = TP / (TP + FN)
-                    F1 = 2 * ((Precision * Recall) / (Precision + Recall))
+                    F1 = 2 * ((Precision * Recall) / (Precision + Recall)) * 100  # 백분율로 변환
                     Accuracy = 50 * (acc_r + acc_f)    
                     
                     yield F1, Accuracy, f"✅ 추론 완료!", total_count, total_count
