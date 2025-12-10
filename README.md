@@ -152,7 +152,7 @@ The final Refined Fake Image is confirmed to be effective by forcing the ViT, DI
 
 We recommend running our code using:
 * NVIDIA GPU + CUDA
-* Python 3, Anaconda
+* Python 3.9.2, Anaconda
 
 To install our implementation, clone our repository and run following commands to install necessary packages:
    ```shell script
@@ -172,10 +172,12 @@ The real and fake datasets must be prepared with an equal number of samples.<br>
 
 We generated the AI images using the Stable Diffusion v1.5 Realistic Vision (SD 1.5 RV) model(https://github.com/lllyasviel/Fooocus).<br>
 For the real dataset, we used cat images from https://www.kaggle.com/datasets/crawford/cat-dataset<br> and human images from https://www.kaggle.com/datasets/arnaud58/flickrfaceshq-dataset-ffhq?select=00002.png.<br>
-You can generate or acquire images using other Stable Diffusion models, and you should use real images that match the domain of those AI pictures.
+You can generate or acquire images using other Stable Diffusion models, and you should use real images that match the domain of those AI pictures.<br>
+
 
 ## Getting Started
-
+<details>
+    
 ### Training
 
 ```shell script
@@ -198,21 +200,17 @@ Inside the ```eval``` folder, you will find three subfolders: ```clean```, ```de
     <img src="https://github.com/user-attachments/assets/716ba711-a323-400c-98e8-25f79fd27386" alt="Inference" width="80%" />
 </p>
 
-When you run the ```gradio_app.py``` file, the following interface appears. <br> 
+When you run the ```gradio_app.py``` file, the following interface appears. You can perform inference or evaluate the detector through this interface.<br> 
 
 ```모델 체크포인트 경로```: This is the checkpoint path for the trained model. It is a ```.pt``` format file located in ```results/{experiment_name}```. Please enter the absolute path of the file. e.g. ```E:\STIG-PGD\STIG-PGD\results\human\parameters_0_epoch.pt```<br>
 ```GPU 디바이스```: This is the GPU device number. It is usually 0.<br>
 ```이미지 크기```: The image size is fixed at 256.<br>
-```입력 데이터셋 폴더 경로```: This is the absolute path to the folder containing the fake images to be used for inference. e.g. ```E:\STIG-PGD\STIG-PGD\datasets\human_inference\fake```<br>
+```입력 데이터셋 폴더 경로```: This is the absolute path to the folder containing the fake images to be used for inference. e.g. ```E:\STIG-PGD\STIG-PGD\datasets\human_inference\fake``` You need a fake dataset for inference that was not used in training.<br>
 ```추론 결과 저장 폴더 경로```: This is the absolute path to the folder where the inference result images will be saved. The inference result images are located in the ```denoised``` folder within the inference result folder.<br>
 
-The inference results are saved at ```results/{experiment_name}/inference/```.<br>
+The inference results are saved to the location you designated as the inference results folder.<br>
 
-Put the folder path of the inference data into ```--inference_data```.<br>
-
-And also put the path of model parameters onto ```--inference_params```.<br>
-
-Inside the ```inference``` folder, you will find two subfolders: ```noise```, and ```denoised```. The ```noise``` folder contains the original AI-generated images, and the ```denoised``` folder contains the refined AI images.
+Inside the inference results folder, you will find subfolder: ```denoised```. The ```denoised``` folder contains the refined AI images after inferencing.
 
 ### Detection(Evaluation)
 
@@ -230,7 +228,8 @@ python train_vit.py --is_train True --classifier vit --lr 0.0002 --size 256 --de
 ```classifier```: Detector type is fixed to ViT. <br>
 ```device```: This is the GPU device number. It is usually 0. <br>
 ```class_epoch```: This is the number of training epochs. <br>
-```dst```: This is the folder where the trained model results will be saved. Specify the target folder within the ```results``` folder that will be used for training. <br>
+```dst```: This is the folder where the trained model results will be saved. Specify the target folder within the ```results``` folder that will be used for training. <br> 
+Additionally, ViT uses the clean(real image) and noise(fake image) folders from the ```eval``` folder, which is located inside the target folder within the ```results``` directory, for training. The resulting model file is saved within the newly created ```vit_classifier``` folder inside the target folder.<br>
 
 **DIF**
 ```shell script
@@ -242,11 +241,22 @@ python train_dif.py datasets/{dataset_name} checks/{checkpoint_name} -e {epochs}
 ```e```: This is the number of training epochs. <br>
 ```f```: This is the checkpoint saving frequency. Setting it to 1 will save a checkpoint every epoch.
 
+#### Evaluation
+
+After training, you can run gradio_app.py and perform evaluation in the detect tab.
+
 <p align="center">
     <img src="https://github.com/user-attachments/assets/9569fcf9-8738-4b0a-96bc-fe83cb5131be" alt="Inference" width="80%" />
 </p>
 
+```감지기 모델 선택```: You can select the model to be evaluated. <br>
+```감지기 모델 폴더 경로```: This is the absolute path where the detector model's checkpoint is saved. <br>
+```Real 이미지 데이터셋 폴더 경로```: This is the absolute path to the real image dataset that the detector model will use for detection. <br>
+```Fake 이미지 데이터셋 폴더 경로```: This is the absolute path to the fake image dataset that the detector model will use for detection. <br>
 
+Once the evaluation is complete, you can review the sample results. You can check how the detector classified the real and fake images. The overall performance is displayed through the F1 score and Accuracy. <br>
+    
+</details>
 
 ## Reference
 | Type | Title & Source | GitHub / Codebase |
