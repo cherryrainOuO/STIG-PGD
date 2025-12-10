@@ -140,11 +140,12 @@ The final Refined Fake Image is confirmed to be effective by forcing the ViT, DI
 ## Additional Results
 
 <p align="center">
-<img width="80%" alt="1_8400" src="https://github.com/user-attachments/assets/8507f27a-e9a5-4cb3-be8f-50d1b610bef8" />
-<img width="80%" alt="1_8300" src="https://github.com/user-attachments/assets/4ce1bbcf-2442-42da-97a9-6d7c9c9f2b03" />
-<img width="80%" alt="1_8200" src="https://github.com/user-attachments/assets/47cdf877-cd6f-42a1-b04e-d5b898d790b8" />
-<img width="80%" alt="1_8100" src="https://github.com/user-attachments/assets/73c624b4-aeb6-4840-a020-9e495e0eb66d" />
-
+<img width="80%" alt="6_7500" src="https://github.com/user-attachments/assets/5926dfa5-e533-4e00-991e-81f00ffb452c" />
+<img width="80%" alt="6_6400" src="https://github.com/user-attachments/assets/c439f107-bb24-4e02-a23c-4ba00b23974b" />
+<img width="80%" alt="6_5400" src="https://github.com/user-attachments/assets/eafa4d0a-5dfe-4ff6-b0b0-1e1229b65357" />
+<img width="80%" alt="2_0" src="https://github.com/user-attachments/assets/d888c0e0-116c-4c9e-9d2c-db1570ebe312" />
+<img width="80%" alt="1_15800" src="https://github.com/user-attachments/assets/a7b9fa1a-cab4-436a-aa1a-008a345d9b11" />
+<img width="80%" alt="1_14700" src="https://github.com/user-attachments/assets/480e4c7f-bc3e-4cdf-b0d6-6a51474a9d1b" />
 </p>
 
 ## Requirements and Installation
@@ -214,18 +215,38 @@ And also put the path of model parameters onto ```--inference_params```.<br>
 Inside the ```inference``` folder, you will find two subfolders: ```noise```, and ```denoised```. The ```noise``` folder contains the original AI-generated images, and the ```denoised``` folder contains the refined AI images.
 
 ### Detection(Evaluation)
-We have prepared two detectors: the ViT and DIF detectors.
+
+We have prepared two detectors: the ViT and DIF detectors. <br>
+You cna train two detectors or measure their performance using an existing trained model. <br>
+
+#### Training Detectors
 
 **ViT**
 ```shell script
 python train_vit.py --is_train True --classifier vit --lr 0.0002 --size 256 --device {gpu_ids} --class_epoch {epochs} --class_batch_size 32 --dst {experiment_name}
 ```
 
+```is_train, lr, size, class_batch_size```: Current value is fixed. <br>
+```classifier```: Detector type is fixed to ViT. <br>
+```device```: This is the GPU device number. It is usually 0. <br>
+```class_epoch```: This is the number of training epochs. <br>
+```dst```: This is the folder where the trained model results will be saved. Specify the target folder within the ```results``` folder that will be used for training. <br>
 
 **DIF**
 ```shell script
-python train_dif.py data/{dataset_name} checks/{checkpoint_name} -e {epochs} -f 1
+python train_dif.py datasets/{dataset_name} checks/{checkpoint_name} -e {epochs} -f 1
 ```
+
+```datasets```: This is the path to the dataset for training. Specify the folder name within the ```datasets``` folder to be used for training. <br>
+```checks```: This is the path to save the training checkpoint. If the ```checks``` folder does not exist, the code will automatically create it and save the checkpoint in a subfolder with the specified chekcpoint folder name. <br>
+```e```: This is the number of training epochs. <br>
+```f```: This is the checkpoint saving frequency. Setting it to 1 will save a checkpoint every epoch.
+
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/9569fcf9-8738-4b0a-96bc-fe83cb5131be" alt="Inference" width="80%" />
+</p>
+
+
 
 ## Reference
 | Type | Title & Source | GitHub / Codebase |
