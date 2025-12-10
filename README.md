@@ -294,7 +294,7 @@ Once the evaluation is complete, you can review the sample results. You can chec
 | Type | Title & Source | GitHub / Codebase |
 | :--- | :--- | :--- |
 | **STIG** (Base Method) | Lee, S., Jung, S. W., & Seo, H. (2024). **Spectrum translation for refinement of image generation (STIG) based on contrastive learning and spectral filter profile.** *In Proceedings of the AAAI Conference on Artificial Intelligence.* | [ykykyk112/STIG](https://github.com/ykykyk112/STIG) |
-| **PGD** (Codebase) | Madry, A., et al. (2018). **Towards deep learning models resistant to adversarial attacks.** *In International Conference on Learning Representations (ICLR).* <br> (Implementation used for this project) | [Harry24k/adversarial-attacks-pytorch](https://github.com/Harry24k/adversarial-attacks-pytorch/tree/master) |
+| **PGD** (Codebase) | Gandhi, A., & Jain, S. (2020, July). Adversarial perturbations fool deepfake detectors. In 2020 International joint conference on neural networks (IJCNN) (pp. 1-8). IEEE. | [Harry24k/adversarial-attacks-pytorch](https://github.com/Harry24k/adversarial-attacks-pytorch/tree/master) |
 ## Team Introduction
 | Name | Student ID | Major |
 | :--- | :--- | :--- |
