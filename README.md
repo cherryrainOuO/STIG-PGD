@@ -269,7 +269,7 @@ python train_dif.py datasets/{dataset_name} checks/{checkpoint_name} -e {epochs}
 ```
 
 ```datasets```: This is the path to the dataset for training. Specify the folder name within the ```datasets``` folder to be used for training. <br>
-```checks```: This is the path to save the training checkpoint. If the ```checks``` folder does not exist, the code will automatically create it and save the checkpoint in a subfolder with the specified chekcpoint folder name. <br>
+```checks```: This is the path to save the training checkpoint. If the ```checks``` folder does not exist, please create it manually. The code will then save the checkpoint in a subfolder with the specified checkpoint folder name. <br>
 ```e```: This is the number of training epochs. <br>
 ```f```: This is the checkpoint saving frequency. Setting it to 1 will save a checkpoint every epoch.
 
