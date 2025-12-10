@@ -176,7 +176,20 @@ You can generate or acquire images using other Stable Diffusion models, and you 
 
 
 ## Getting Started
+
+Since the training process is time-consuming, a ```Demo``` has been prepared. You can perform inference and evaluation using the provided files with the detector. <br>
+If you would like to know more about the training, inference methods, and the detector's learning and evaluation process, refer to the ```Training, Inference, and Detector Evaluation``` section. <br>
+
 <details>
+<summary> Demo </summary>
+
+The dataset and checkpoint files required for demo execution have been prepared. Please use the Google Drive link below to download the files. <br>
+[Demo file](https://drive.google.com/drive/folders/1q6-aDSPMqo_txCLIuriYCSQHHrsGAvaW?usp=sharing)
+    
+</details>
+
+<details>
+<summary> Training, Inference, and Detector Evaluation </summary>
     
 ### Training
 
