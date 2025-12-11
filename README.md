@@ -1,7 +1,8 @@
 # Attacking Fake-Image Detectors with STIG-PGD
 
 <p align="center">
-    
+    <img src="https://github.com/user-attachments/assets/14a14d7e-b137-4734-b73b-83c5913feed0" alt="Result 1" width="80%">
+    <img src="https://github.com/user-attachments/assets/dc2d947c-c641-43a6-b2d0-ca01594d273f" alt="Result 1" width="80%">
 </p>
 
 ## Description
