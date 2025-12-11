@@ -1,10 +1,7 @@
 # Attacking Fake-Image Detectors with STIG-PGD
 
 <p align="center">
-    <img src="https://github.com/user-attachments/assets/7a03e788-baa7-4ce7-9a09-a8286cd6b6a0" alt="Result 1" width="80%">
-    <img src="https://github.com/user-attachments/assets/853d8507-81cc-4dca-ae74-c32cfd47e7fa" alt="Result 3" width="80%">
-    <img src="https://github.com/user-attachments/assets/77edcbc0-b746-4c97-9017-db8786bc6590" alt="Result 5" width="80%">
-    <img src="https://github.com/user-attachments/assets/57d7eea8-e8c5-4ce6-bdd3-80c8b07ba0c6" alt="Result 7" width="80%">
+    
 </p>
 
 ## Description
@@ -125,10 +122,10 @@ The final Refined Fake Image is confirmed to be effective by forcing the ViT, DI
 ## Additional Results
 
 <p align="center">
+<img src="https://github.com/user-attachments/assets/7a03e788-baa7-4ce7-9a09-a8286cd6b6a0" alt="Result 1" width="80%">
+<img src="https://github.com/user-attachments/assets/853d8507-81cc-4dca-ae74-c32cfd47e7fa" alt="Result 3" width="80%">
 <img width="80%" alt="6_7500" src="https://github.com/user-attachments/assets/5926dfa5-e533-4e00-991e-81f00ffb452c" />
-<img width="80%" alt="6_6400" src="https://github.com/user-attachments/assets/c439f107-bb24-4e02-a23c-4ba00b23974b" />
 <img width="80%" alt="6_5400" src="https://github.com/user-attachments/assets/eafa4d0a-5dfe-4ff6-b0b0-1e1229b65357" />
-<img width="80%" alt="2_0" src="https://github.com/user-attachments/assets/d888c0e0-116c-4c9e-9d2c-db1570ebe312" />
 <img width="80%" alt="1_15800" src="https://github.com/user-attachments/assets/a7b9fa1a-cab4-436a-aa1a-008a345d9b11" />
 <img width="80%" alt="1_14700" src="https://github.com/user-attachments/assets/480e4c7f-bc3e-4cdf-b0d6-6a51474a9d1b" />
 </p>
