@@ -144,8 +144,11 @@ pip install torch==2.7.0+cu128 torchvision==0.22.0+cu128 torchaudio==2.7.0+cu128
 pip install -r requirements.txt
 ```
 ### Preparing Dataset
-Put real and fake datasets in the folder ```datasets/```.
 
+For the demo, this process is unnecessary because the dataset is provided beforehand. <br>
+‼️**If you wish to run the ```demo```. please proceed to the 'Getting Started' section.**‼️ <br>
+
+Put real and fake datasets in the folder ```datasets/```. <br>
 The real images should be located in ```datasets/{dataset_name}/real/```.<br>
 The generated images should be located in ```datasets/{dataset_name}/fake/```.<br>
 We suppose the type of image file is ```.png```.<br>
