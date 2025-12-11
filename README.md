@@ -301,4 +301,10 @@ Once the evaluation is complete, you can review the sample results. You can chec
 | **Hyeonjun Cha** | 202011378 | Computer Science and Engineering |
 | **Euntaek Lee** | 201911203 | Computer Science and Engineering |
 | **Kyeongbeom Park** | 202011291 | Computer Science and Engineering |
+## License
+This project was produced as a result of Konkuk University's graduation project course.
+</br>
+For any citation or reuse, please credit:
+</br>
 
+> Team CHA et al., "Attacking Fake-Image Detectors Using STIG-PGD", Konkuk Univ., 2025.
